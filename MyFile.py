@@ -53,6 +53,10 @@ class FileSystem:
                 if fnmatch.fnmatch(fileName, Pattern):
                     result.append(self.__addFolderSpliter__(dirPath) + fileName)
         return result
+    
+    def localDirectory(self, currentFile = __file__):
+        BaseDirectory = currentFile[:currentFile.rfind('\\')+1]
+        return BaseDirectory
         
     def deleteFiles(self, Folder, Pattern='*.*', PrintListFiles = True):
         """Delete all files in folder and subfolders filtered by pattern """
