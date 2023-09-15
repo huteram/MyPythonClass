@@ -143,6 +143,22 @@ class FileSystem:
             print('file "{}" doesn`t exist.'.format(FileName))
             Data = -1        
         return Data
+    
+    def saveFile(self, Data, FileName):
+        "Saving data to a file."                
+        if FileName.count(':\\') == 0:
+            # FileName = self.localDirectory() + FileName
+            print("There is missing full file address")
+            
+        else:
+            Directory = self.localDirectory(FileName)
+            self.MakeDirectory(Directory)
+            with open(FileName, mode="wb") as file_obj:
+                file_obj.write(Data)
+                file_obj.close()
+                # with mmap.mmap(file_obj.fileno(), length=len(Data), access=mmap.ACCESS_WRITE) as mmap_obj:
+                #     mmap_obj.write(Data)
+
 
     def ListDir(self, Adresar=''):
         if Adresar =='' or Adresar[0]== '\\':
